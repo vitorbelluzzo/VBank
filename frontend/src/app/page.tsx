@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   Card,
   CardContent,
@@ -16,10 +16,10 @@ import {
 
 
 
-export function App() {
+ export default function App() {
   return (
     <div className="max-w-64 mx-auto mt-60">
-      <Card className=" text-center  bg-zinc-900 text-white border-none">
+      <Card className=" text-center  bg-zinc-900 text-white border-none rounded">
         <CardHeader >
           <CardTitle>Login</CardTitle>
           
@@ -29,7 +29,7 @@ export function App() {
         <Input type="password"  placeholder="Senha" className="bg-zinc-950 border-zinc-700 placeholder:text-zinc-600" />
         </CardContent>
         <CardFooter className="flex justify-center">
-        <Button  className="bg-transparent border w-full  bg-blue-600 hover:bg-blue-500 border-none   ">Logar</Button>
+        <Button  className="bg-transparent rounded border w-full  bg-blue-600 hover:bg-blue-500 border-none   ">Logar</Button>
         </CardFooter>
       </Card>
     </div>
