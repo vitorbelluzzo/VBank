@@ -1,4 +1,4 @@
-#### Desafios
+#### Desafio 1
 [X] Implementar os métodos de depósito (deposit) e saque (withdraw) na classe VbAccount
   
   - Os valores dos saldos devem ser alterados, de acordo com o valor informado para depósito
@@ -18,3 +18,13 @@
 [x] Os atributos name e accountNumber não podem ser alterados internamente ou externamente
 
 [x] Criar instancias para cada um dos tipos de conta no app.ts e executar os métodos possíveis.
+
+#### Desafio 2
+[x] Crie os componentes referentes aos elementos na página inicial
+
+[x] Crie um componente para o header, com o título da aplicação
+[x] Crie um componente para o botão, que aceite onClick como uma das props do componente
+[x] Refatore o componente Card para receber o formulário de login. Ao invés de chamar elemento por elemento na página inicial, apenas o componente Card deve ser chamado.
+[x] Crie uma função de Boas vindas
+[x] Ao clicar no botão, deve aparecer um alert com uma mensagem de boas vindas
+[x] Crie o teste unitário da função
