@@ -1,4 +1,4 @@
-import { CardLogin } from "@/components/card";
+import { CardLogin } from "@/components/Card/card";
 
 export default function App() {
   return (
