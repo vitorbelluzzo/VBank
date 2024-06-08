@@ -1,7 +1,6 @@
 'use client'
  
 import { Button as Botão } from "@/components/ui/button";
-import { MouseEventHandler } from "react";
 
 interface buttonProps {
   textoBotão: string;
