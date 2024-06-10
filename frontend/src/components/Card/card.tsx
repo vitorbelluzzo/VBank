@@ -13,13 +13,21 @@ import { Login } from "@/services/login";
 import { useEffect, useState } from "react";
 import { api } from "@/api";
 
+interface UserDataProps {
+  email: string;
+  password: string;
+  name: string;
+}
+
 export function CardLogin() {
   const [email, setEmail] = useState("");
+  const [userData, SetUserData] = useState<UserDataProps>()
 
   useEffect(() => {
     const getData = async () => {
-      const data = await api;
-      console.log(data);
+      const data  = await api;
+      SetUserData(data);
+     
     };
     getData();
   }, []);
