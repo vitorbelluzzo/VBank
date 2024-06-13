@@ -21,11 +21,11 @@ interface UserDataProps {
 
 export function CardLogin() {
   const [email, setEmail] = useState("");
-  const [userData, SetUserData] = useState<UserDataProps>()
+  const [userData, SetUserData] = useState<null | UserDataProps>()
 
   useEffect(() => {
     const getData = async () => {
-      const data  = await api;
+      const data: any | UserDataProps  = await api;
       SetUserData(data);
      
     };
@@ -39,6 +39,11 @@ export function CardLogin() {
 
   return (
     <Card className=" text-center  bg-zinc-900 text-white border-none rounded">
+       {/* {
+        userData === null || userData === undefined ? 
+        <h1>Carregando...</h1> :
+        <h1>Informações carregadas</h1>
+       } */}
       <CardHeader>
         <CardTitle>Login</CardTitle>
       </CardHeader>
