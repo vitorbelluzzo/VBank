@@ -1,9 +1,10 @@
-import { CardLogin } from "@/components/Card/card";
+
+import Home from "./home/page";
 
 export default function App() {
   return (
-    <div className="max-w-64 mx-auto mt-60">
-      <CardLogin />
+    <div>
+      <Home />
     </div>
   );
 }

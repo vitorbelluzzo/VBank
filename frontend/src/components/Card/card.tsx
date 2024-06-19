@@ -13,25 +13,10 @@ import { Login } from "@/services/login";
 import { useEffect, useState } from "react";
 import { api } from "@/api";
 
-interface UserDataProps {
-  email: string;
-  password: string;
-  name: string;
-}
+
 
 export function CardLogin() {
   const [email, setEmail] = useState("");
-  const [userData, SetUserData] = useState<null | UserDataProps>()
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: any | UserDataProps  = await api;
-      SetUserData(data);
-     
-    };
-    getData();
-  }, []);
-
 
   function handleEmail() {
     Login(email);
@@ -39,11 +24,6 @@ export function CardLogin() {
 
   return (
     <Card className=" text-center  bg-zinc-900 text-white border-none rounded">
-       {/* {
-        userData === null || userData === undefined ? 
-        <h1>Carregando...</h1> :
-        <h1>Informações carregadas</h1>
-       } */}
       <CardHeader>
         <CardTitle>Login</CardTitle>
       </CardHeader>
