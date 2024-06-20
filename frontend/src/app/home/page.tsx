@@ -1,4 +1,4 @@
-import { CardLogin } from "@/components/Card/card";
+import { CardLogin } from "@/components/Card/page";
 
 export default function Home() {
   return (

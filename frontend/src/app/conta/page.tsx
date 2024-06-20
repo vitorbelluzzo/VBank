@@ -2,6 +2,7 @@
 import { api } from "@/api";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Conta() {
   const [userData, SetUserData] = useState<null | UserDataProps>();
@@ -11,6 +12,7 @@ export default function Conta() {
     password: string;
     name: string;
     balance: number;
+    id: string;
   }
 
   useEffect(() => {
@@ -20,8 +22,6 @@ export default function Conta() {
     };
     getData();
   }, []);
-
-  console.log(userData);
 
   const currency = userData?.balance.toLocaleString("pt-br", {
     style: "currency",
@@ -38,9 +38,7 @@ export default function Conta() {
         </h1>
       )}
       {!userData ? (
-        <Skeleton className="bg-zinc-900/90 h-24 p-6 rounded mt-3">
-         
-        </Skeleton>
+        <Skeleton className="bg-zinc-900/90 h-24 p-6 rounded mt-3"></Skeleton>
       ) : (
         <div className="bg-zinc-900 p-6 rounded mt-3">
           <div className="flex flex-col gap-1">

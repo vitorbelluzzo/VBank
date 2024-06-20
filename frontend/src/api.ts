@@ -3,6 +3,7 @@ const conta = {
   password: "Abc123@",
   name: "Vitor",
   balance: 2350.50,
+  id: '1',
 };
 
 export const api = new Promise((resolve) => {
