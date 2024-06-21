@@ -1,28 +1,66 @@
-'use client';
+"use client";
+import { api } from "@/api";
+import { useAppContext } from "@/components/data-provider";
+import { Skeleton } from "@/components/ui/skeleton";
 
-import { useRouter, useParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useParams, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
-const Conta = () => {
+interface UserDataProps {
+  email: string;
+  password: string;
+  name: string;
+  balance: number;
+  id: string;
+}
+
+export default function Conta() {
+  const [userData, SetUserData] = useState<null | UserDataProps>();
   const router = useRouter();
   const { id } = useParams();
 
   useEffect(() => {
-    if (id !== '1') {
-      router.push('/conta');
-    }
-  }, [id, router]);
+    const getData = async () => {
+      const data: any | UserDataProps = await api;
+      SetUserData(data);
+    };
+    getData();
+  }, []);
 
-  if (id !== '1') {
-    return null; // ou um componente de carregamento, enquanto redireciona
+  const currency = userData?.balance.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  if (userData && userData.id !== id) {
+    router.push("/");
+    return null;
   }
 
+  const context = useAppContext();
+  console.log(context);
+
   return (
-    <div>
-      <h1>Conta do Cliente {id}</h1>
-      {/* Sua lógica para exibir a conta do cliente com id 1 */}
+    <div className="mx-auto">
+      {!userData ? (
+        <Skeleton className="h-8 w-28 bg-zinc-900/90 rounded" />
+      ) : (
+        <h1 className="text-zinc-50 font-semibold text-2xl">
+          Olá, {userData?.name}
+        </h1>
+      )}
+      {!userData ? (
+        <Skeleton className="bg-zinc-900/90 h-24 p-6 rounded mt-3"></Skeleton>
+      ) : (
+        <div className="bg-zinc-900 p-6 rounded mt-3">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-light text-zinc-500">
+              Total Balance
+            </span>
+            <span className="text-zinc-50 text-xl">{currency}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-
-export default Conta;
+}

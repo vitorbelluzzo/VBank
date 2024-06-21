@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { Header } from "@/components/header/header";
+import { createContext } from "react";
+import { Metadata } from "next";
+import { AppContextProvider } from "@/components/data-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-950 px-4 max-w-xl mx-auto`}>
-        <Header />
-        {children}
-      </body>
+      <AppContextProvider>
+        <body
+          className={`${inter.className} bg-zinc-950 px-4 max-w-xl mx-auto`}
+        >
+          <Header />
+          {children}
+        </body>
+      </AppContextProvider>
     </html>
   );
 }
