@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import { Header } from "@/components/header/header";
 import { createContext } from "react";
 import { Metadata } from "next";
-import { AppContextProvider } from "@/components/data-provider";
+import { AppContextProvider } from "@/components/data-context";
 
 const inter = Inter({ subsets: ["latin"] });
 

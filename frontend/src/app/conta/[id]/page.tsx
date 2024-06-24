@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/api";
-import { useAppContext } from "@/components/data-provider";
+import { AppContext, useAppContext } from "@/components/data-context";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { useParams, useRouter } from "next/navigation";
@@ -26,6 +26,12 @@ export default function Conta() {
     };
     getData();
   }, []);
+
+  const { isLoggedIn } = useContext(AppContext);
+  console.log(isLoggedIn);
+
+  !isLoggedIn && router.push("/");
+  
 
   const currency = userData?.balance.toLocaleString("pt-br", {
     style: "currency",
