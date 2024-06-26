@@ -1,8 +1,7 @@
-'use client'
+"use client";
 
 import { CardLogin } from "@/components/Card/page";
 import {
-  Card,
   CardContent,
   CardFooter,
   CardHeader,
@@ -11,10 +10,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { ButtonLogin } from "@/components/button/buttonLogin";
 import { useState } from "react";
-import { Login } from "@/services/login";
+import useLogin from "@/services/login";
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const { login } = useLogin();
   return (
     <div className="max-w-64 mx-auto mt-60">
       <CardLogin>
@@ -37,7 +37,11 @@ export default function Home() {
           />
         </CardContent>
         <CardFooter className="flex justify-center">
-          <ButtonLogin key={1} textoBotão={"Entrar"} onClick={() => Login(email)} />
+          <ButtonLogin
+            key={1}
+            textoBotão={"Entrar"}
+            onClick={() => login(email)}
+          />
         </CardFooter>
       </CardLogin>
     </div>

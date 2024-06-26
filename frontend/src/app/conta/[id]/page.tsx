@@ -28,8 +28,6 @@ export default function Conta() {
   }, []);
 
   const { isLoggedIn } = useContext(AppContext);
-  console.log(isLoggedIn);
-
   !isLoggedIn && router.push("/");
   
 
