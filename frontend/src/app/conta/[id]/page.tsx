@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/api";
-import { AppContext, useAppContext } from "@/components/data-context";
+import { AppContext } from "@/components/data-context";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { useParams, useRouter } from "next/navigation";
