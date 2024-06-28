@@ -29,7 +29,6 @@ export default function Conta() {
 
   const { isLoggedIn } = useContext(AppContext);
   !isLoggedIn && router.push("/");
-  
 
   const currency = userData?.balance.toLocaleString("pt-br", {
     style: "currency",
@@ -40,9 +39,6 @@ export default function Conta() {
     router.push("/");
     return null;
   }
-
-  const context = useAppContext();
-  console.log(context);
 
   return (
     <div className="mx-auto">
