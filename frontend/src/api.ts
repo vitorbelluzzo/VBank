@@ -2,9 +2,11 @@ const conta = {
   email: "vitorbelluzzo@hotmail.com",
   password: "Abc123@",
   name: "Vitor",
-  balance: 2350.50,
+  balance: 150230,
   id: '1',
 };
+
+
 
 export const api = new Promise((resolve) => {
   setTimeout(() => {

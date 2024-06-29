@@ -1,9 +1,19 @@
-import { AppContext } from "@/components/data-context";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useParams, useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+'use client';
+
+import { LogOut } from "lucide-react";
+import { Button } from "../ui/button";
+import { AppContext } from "../data-context";
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 export function Header() {
+  const { isLoggedIn,setIsloggedIn } = useContext(AppContext);
+  const router = useRouter();
+
+  function Logout() {
+    setIsloggedIn(false);
+    router.push("/");
+  }
   return (
     <header className="">
       <nav
@@ -67,8 +77,15 @@ export function Header() {
           </svg>
           <span className="text-zinc-50 text-xl font-semibold">VBank</span>
         </a>
-        <div className="flex flex-1 justify-end text-white ">
-          <button className=" ring-zinc-50 ring-1 rounded px-3 text-sm mx-8">Logout</button>
+        <div className="flex flex-1 justify-end">
+        {isLoggedIn && (
+          <Button
+          onClick={Logout}
+          className="text-white gap-1 outline rounded outline-[0.5px]">
+          <LogOut size={15} />
+          Sair
+        </Button>
+        )}
         </div>
       </nav>
     </header>

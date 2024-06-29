@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface UserDataProps {
   email: string;
@@ -16,8 +17,15 @@ interface UserDataProps {
 
 export default function Conta() {
   const [userData, SetUserData] = useState<null | UserDataProps>();
+  const { isLoggedIn } = useContext(AppContext);
   const router = useRouter();
   const { id } = useParams();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push("/");
+    }
+  }, [isLoggedIn, router]);
 
   useEffect(() => {
     const getData = async () => {
@@ -26,9 +34,6 @@ export default function Conta() {
     };
     getData();
   }, []);
-
-  const { isLoggedIn } = useContext(AppContext);
-  !isLoggedIn && router.push("/");
 
   const currency = userData?.balance.toLocaleString("pt-br", {
     style: "currency",

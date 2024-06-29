@@ -9,7 +9,7 @@ interface buttonProps {
 
 export function ButtonLogin({ textoBotão, onClick }: buttonProps) {
   return (
-    <Botão onClick={onClick} className="bg-transparent rounded border w-full  bg-blue-600 hover:bg-blue-500 border-none">
+    <Botão  onClick={onClick} className="bg-transparent rounded border w-full  bg-blue-600 hover:bg-blue-500 border-none">
       {textoBotão}
     </Botão>
   );
