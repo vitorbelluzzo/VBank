@@ -15,7 +15,7 @@ export const AppContextProvider = ({children,}: {children: React.ReactNode;}) =>
   const user = "Vitor";
   return (
     <AppContext.Provider value={{ user, isLoggedIn, setIsloggedIn }}>
-      {children}
+      {children} 
     </AppContext.Provider>
   );
 };
