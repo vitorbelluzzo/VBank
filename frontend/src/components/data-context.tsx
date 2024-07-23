@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { changeLocalStorage, getAllLocalStorages } from "@/services/storage";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface AppContextProps {
   user: string;
@@ -9,13 +10,29 @@ interface AppContextProps {
 
 export const AppContext = createContext<AppContextProps>({} as AppContextProps);
 
-export const AppContextProvider = ({children,}: {children: React.ReactNode;}) => {
-  
-  const [isLoggedIn, setIsloggedIn] = useState(false);
+export const AppContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [isLoggedIn, setIsloggedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storage = getAllLocalStorages();
+    if (storage) {
+      const { login } = JSON.parse(storage);
+      setIsloggedIn(login);
+    }
+  }, []);
+
+  useEffect(() => {
+    changeLocalStorage({ login: isLoggedIn })
+  }, [isLoggedIn])
+
   const user = "Vitor";
   return (
     <AppContext.Provider value={{ user, isLoggedIn, setIsloggedIn }}>
-      {children} 
+      {children}
     </AppContext.Provider>
   );
 };

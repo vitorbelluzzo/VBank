@@ -1,17 +1,19 @@
-'use client';
+"use client";
 
 import { LogOut } from "lucide-react";
 import { Button } from "../ui/button";
 import { AppContext } from "../data-context";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
+import { changeLocalStorage } from "@/services/storage";
 
 export function Header() {
-  const { isLoggedIn,setIsloggedIn } = useContext(AppContext);
+  const { isLoggedIn, setIsloggedIn } = useContext(AppContext);
   const router = useRouter();
 
   function Logout() {
     setIsloggedIn(false);
+    changeLocalStorage({ login: false });
     router.push("/");
   }
   return (
@@ -78,14 +80,15 @@ export function Header() {
           <span className="text-zinc-50 text-xl font-semibold">VBank</span>
         </a>
         <div className="flex flex-1 justify-end">
-        {isLoggedIn && (
-          <Button
-          onClick={Logout}
-          className="text-white gap-1 outline rounded outline-[0.5px]">
-          <LogOut size={15} />
-          Sair
-        </Button>
-        )}
+          {isLoggedIn && (
+            <Button
+              onClick={Logout}
+              className="text-white gap-1 outline rounded outline-[0.5px]"
+            >
+              <LogOut size={15} />
+              Sair
+            </Button>
+          )}
         </div>
       </nav>
     </header>

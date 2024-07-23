@@ -1,17 +1,19 @@
+interface Vbank {
+  login: boolean;
+}
+
 const vbank = {
   login: false,
 };
 
-//typeof window !== 'undefined': Esta verificação garante que o código só será executado no lado do cliente, onde o objeto window (e, portanto, localStorage) está disponível.
+export const getAllLocalStorages = (): string | null => {
+  return localStorage.getItem('vbank');
+};
 
-export function getAllLocalStorages() {
-  if (typeof window !== 'undefined') { 
-    localStorage.getItem("vbank") } 
-    return null;
-}
+export const createLocalStorage = (): void => {
+  localStorage.setItem('vbank', JSON.stringify(vbank));
+};
 
-export function createLocalStorage() {
-  if (typeof window !== 'undefined') {
-     return localStorage.setItem("vbank", JSON.stringify(vbank));
-  }
-}
+export const changeLocalStorage = (vbank: Vbank): void => {
+  localStorage.setItem('vbank', JSON.stringify(vbank));
+};

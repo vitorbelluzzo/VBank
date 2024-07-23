@@ -2,6 +2,7 @@
 import { api } from "@/api";
 import { AppContext } from "@/components/data-context";
 import { Skeleton } from "@/components/ui/skeleton";
+import { changeLocalStorage } from "@/services/storage";
 
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -16,7 +17,7 @@ interface UserDataProps {
 }
 
 export default function Conta() {
-  const [userData, SetUserData] = useState<null | UserDataProps>();
+  const [userData, SetUserData] = useState<null | UserDataProps>(null);
   const { isLoggedIn } = useContext(AppContext);
   const router = useRouter();
   const { id } = useParams();
