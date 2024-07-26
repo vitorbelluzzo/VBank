@@ -18,6 +18,9 @@ const useLogin = () => {
       toast.error("Email ou senha inválido");
     } else {
       setIsloggedIn(true);
+      changeLocalStorage({
+        login: true,
+      });
       router.push(`/conta/${data.id}`);
     }
   };

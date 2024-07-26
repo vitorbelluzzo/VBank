@@ -1,8 +1,10 @@
 "use client";
 import { api } from "@/api";
 import { AppContext } from "@/components/data-context";
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-
+import { changeLocalStorage, createLocalStorage } from "@/services/storage";
+import { LogOut } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
@@ -16,13 +18,16 @@ interface UserDataProps {
 
 export default function Conta() {
   const [userData, SetUserData] = useState<null | UserDataProps>(null);
-  const { isLoggedIn } = useContext(AppContext);
+  const { isLoggedIn, setIsloggedIn } = useContext(AppContext);
   const router = useRouter();
   const { id } = useParams();
 
   useEffect(() => {
     if (!isLoggedIn) {
       router.push("/");
+      changeLocalStorage({
+        login: false,
+      });
     }
   }, [isLoggedIn, router]);
 
@@ -30,6 +35,7 @@ export default function Conta() {
     const getData = async () => {
       const data: any | UserDataProps = await api;
       SetUserData(data);
+      changeLocalStorage(data);
     };
     getData();
   }, []);
@@ -41,11 +47,27 @@ export default function Conta() {
 
   if (userData && userData.id !== id) {
     router.push("/");
-    return null;
+  }
+
+  function Logout() {
+    setIsloggedIn(false);
+    changeLocalStorage({
+      login: false,
+    });
+    router.push("/");
   }
 
   return (
     <div className="mx-auto">
+      <div className="flex flex-1 justify-end">
+        <Button
+          onClick={Logout}
+          className="text-white gap-1 outline rounded outline-[0.5px]"
+        >
+          <LogOut size={15} />
+          Sair
+        </Button>
+      </div>
       {!userData ? (
         <Skeleton className="h-8 w-28 bg-zinc-900/90 rounded" />
       ) : (

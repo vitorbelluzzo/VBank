@@ -1,28 +1,12 @@
 "use client";
 
-import { LogOut } from "lucide-react";
-import { Button } from "../ui/button";
-import { AppContext } from "../data-context";
-import { useContext } from "react";
-import { useRouter } from "next/navigation";
-import { changeLocalStorage } from "@/services/storage";
-
 export function Header() {
-  const { isLoggedIn, setIsloggedIn } = useContext(AppContext);
-  const router = useRouter();
-
-  function Logout() {
-    setIsloggedIn(false);
-    changeLocalStorage({ login: false });
-    router.push("/");
-  }
   return (
     <header className="">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-center p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex flex-1 text-white"></div>
         <a href="#" className="flex justify-center items-center gap-1">
           <svg
             width="24px"
@@ -79,17 +63,6 @@ export function Header() {
           </svg>
           <span className="text-zinc-50 text-xl font-semibold">VBank</span>
         </a>
-        <div className="flex flex-1 justify-end">
-          {isLoggedIn && (
-            <Button
-              onClick={Logout}
-              className="text-white gap-1 outline rounded outline-[0.5px]"
-            >
-              <LogOut size={15} />
-              Sair
-            </Button>
-          )}
-        </div>
       </nav>
     </header>
   );

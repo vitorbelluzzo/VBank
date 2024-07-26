@@ -21,13 +21,9 @@ export const AppContextProvider = ({
     const storage = getAllLocalStorages();
     if (storage) {
       const { login } = JSON.parse(storage);
-      setIsloggedIn(login);
+      
     }
   }, []);
-
-  useEffect(() => {
-    changeLocalStorage({ login: isLoggedIn })
-  }, [isLoggedIn])
 
   const user = "Vitor";
   return (

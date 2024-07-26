@@ -3,17 +3,17 @@ interface Vbank {
 }
 
 const vbank = {
-  login: false,
+  login: "false",
 };
 
 export const getAllLocalStorages = (): string | null => {
-  return localStorage.getItem('vbank');
+  return localStorage.getItem("vbank");
 };
 
 export const createLocalStorage = (): void => {
-  localStorage.setItem('vbank', JSON.stringify(vbank));
+  localStorage.setItem("vbank", JSON.stringify(vbank));
 };
 
 export const changeLocalStorage = (vbank: Vbank): void => {
-  localStorage.setItem('vbank', JSON.stringify(vbank));
+  localStorage.setItem("vbank", JSON.stringify(vbank));
 };
