@@ -1,5 +1,5 @@
 "use client";
-import { changeLocalStorage, getAllLocalStorages } from "@/services/storage";
+import { getAllLocalStorages } from "@/services/storage";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface AppContextProps {
@@ -16,14 +16,6 @@ export const AppContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [isLoggedIn, setIsloggedIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    const storage = getAllLocalStorages();
-    if (storage) {
-      const { login } = JSON.parse(storage);
-      
-    }
-  }, []);
 
   const user = "Vitor";
   return (

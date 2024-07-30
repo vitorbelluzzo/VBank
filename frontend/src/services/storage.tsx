@@ -1,4 +1,9 @@
 interface Vbank {
+  email: string;
+  password: string;
+  name: string;
+  balance: number;
+  id: string;
   login: boolean;
 }
 
@@ -7,7 +12,10 @@ const vbank = {
 };
 
 export const getAllLocalStorages = (): string | null => {
-  return localStorage.getItem("vbank");
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("vbank");
+  }
+  return null;
 };
 
 export const createLocalStorage = (): void => {

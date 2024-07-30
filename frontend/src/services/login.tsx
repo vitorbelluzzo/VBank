@@ -3,7 +3,6 @@ import { AppContext } from "@/components/data-context";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { Toaster, toast } from "sonner";
-import { changeLocalStorage } from "./storage";
 
 const useLogin = () => {
   const { setIsloggedIn } = useContext(AppContext);
@@ -18,9 +17,6 @@ const useLogin = () => {
       toast.error("Email ou senha inválido");
     } else {
       setIsloggedIn(true);
-      changeLocalStorage({
-        login: true,
-      });
       router.push(`/conta/${data.id}`);
     }
   };

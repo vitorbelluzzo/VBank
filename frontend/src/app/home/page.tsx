@@ -14,7 +14,7 @@ import useLogin from "@/services/login";
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
   const { login } = useLogin();
   return (
     <div className="max-w-64 mx-auto mt-60">
@@ -36,15 +36,13 @@ export default function Home() {
             placeholder="Senha"
             className="bg-zinc-950 border-zinc-700 placeholder:text-zinc-600"
             onChange={(event) => {
-              setPassword(event.target.value)
+              setPassword(event.target.value);
             }}
           />
         </CardContent>
         <CardFooter className="flex justify-center">
           <ButtonLogin
-          
-            key={1}
-            textoBotão={"Entrar"}
+            buttonText={"Entrar"}
             onClick={() => login(email, password)}
           />
         </CardFooter>

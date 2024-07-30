@@ -3,10 +3,8 @@ const conta = {
   password: "abc",
   name: "Vitor",
   balance: 150230,
-  id: '1',
+  id: "1",
 };
-
-
 
 export const api = new Promise((resolve) => {
   setTimeout(() => {
