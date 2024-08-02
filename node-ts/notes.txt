@@ -1,0 +1,31 @@
+métodos http 
+
+get -> pegar dados
+post -> criar dados
+put/patch  -> atualizar dados 
+delete -> deletar dados 
+
+Status code
+- 200 ao 299 - sucesso
+- 400 ao 499 - erro do cliente
+- 500 ao 500 - erro do servidor
+
+_________________________________________________________________________
+Criando nossas rotas
+
+✅- instalar express -> npm i express 
+✅- no index.ts, importe o express -> import express from 'express'; 
+✅- crie uma variavel chamada server que recebe o express() 
+✅- instale o types/express -> npm i -D @types/express
+✅- chame o server.listen(5000) para ouvir a porta 5000 
+✅- chame o server.get('/') -> rota de entrada,  
+✅- depois de sinalizar o path da rota '/', insira uma af () => {} com dois parametros, request e response 
+✅- tipe esses parametros com :Request e :Response, importe eles no mesmo caminho de importação do express   
+✅- por fim, dentro do objeto da af, retorne o response.status(200).json({ message: 'Vbank API' }) -> sucesso
+✅- use o postman e teste a rota com get localhost:5000/ 
+✅- agora vamos simular a criação de um usuario, no index.ts, crie o server.post('/user'), (request:Request, response:Response) 
+✅- o post acima ira ter dentro do objeto um const body que recebe um request.body e valide a variavel com um log nela 
+✅- para testar, use o post no postman e insira a url do metodo que acabamos de criar '/user' 
+✅- ainda dentro do metodo post, retorne response.status(201).json({message: 'Usuário criado' })
+✅- o express por padrão nao utiliza o formato de requisição JSON, para fazer isso, chame o server.use(express.json())
+-----------------------------------------------------------------------------------------------------------------------------------
