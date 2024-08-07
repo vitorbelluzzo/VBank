@@ -1,17 +1,22 @@
 import { Request, Response } from "express";
-
-const db = [
-  {
-    name: "sophia",
-    email: "sophia@email.com",
-  },
-];
+import { UserService } from "../services/UserService";
 
 export class UserController {
   createUser = (request: Request, response: Response) => {
     const user = request.body;
-    db.push(user);
-    console.log(db);
-    response.status(201).json({ message: "Usuário criado " });
+    if (!user.name || !user.email) {
+      return response
+        .status(400)
+        .json({ message: "Bad request: name or email invalid" });
+    }
+    const userService = new UserService();
+    userService.createUser(user.name, user.email);
+    response.status(201).json({ message: "User created successfully" });
+  };
+
+  getUser = (request: Request, response: Response) => {
+    const userService = new UserService();
+    const users = userService.getAllUsers();
+    return response.status(200).json({ users });
   };
 }
