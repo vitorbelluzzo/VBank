@@ -3,11 +3,7 @@ import { api } from "@/api";
 import { AppContext } from "@/components/data-context";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  changeLocalStorage,
-  createLocalStorage,
-  getAllLocalStorages,
-} from "@/services/storage";
+import { changeLocalStorage, getAllLocalStorages } from "@/services/storage";
 import { LogOut, User } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -41,10 +37,10 @@ export default function Conta() {
 
   useEffect(() => {
     const getData = async () => {
-      const data = (await api) as UserDataProps; 
+      const data = (await api) as UserDataProps;
       SetUserData(data);
       if (isLoggedIn && typeof window !== "undefined") {
-        changeLocalStorage({ ...data, login: true }); 
+        changeLocalStorage({ ...data, login: true });
       }
     };
     getData();
