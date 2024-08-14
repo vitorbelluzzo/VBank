@@ -7,7 +7,7 @@
 ###
 Frontend da aplicação desenvolvida em: 
 Framework: Next.js
+Linguagem: TypeScript
 Estilização: Tailwind CSS
 Testes: Jest e Testing Library
-Tipagem: TypeScript
 Linting: ESLint
