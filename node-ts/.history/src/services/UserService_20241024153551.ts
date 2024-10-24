@@ -20,12 +20,6 @@ const db = [
 
 export class UserService  {
 
-  db: IUser[];
-
-  constructor(database = db) {
-    this.db = database;
-  }
-
   createUser = (name: string, email: string) => {
     if (!name || !email) {
       throw new Error("Name and email are required");
@@ -37,7 +31,7 @@ export class UserService  {
     };
 
     this.db.push(user);
-    console.log("Usuário inserido no banco de dados");
+    console.log(this.db);
   };
 
   getAllUsers = () => {

@@ -1,4 +1,5 @@
 import express, { Request, Response, json } from "express";
+import { UserController } from "./controllers/UserController";
 import { router } from "./routes";
 
 export const server = express();

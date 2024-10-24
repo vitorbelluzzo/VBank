@@ -22,9 +22,9 @@ export class UserService  {
 
   db: IUser[];
 
-  constructor(database = db) {
-    this.db = database;
-  }
+  constructor(
+    database= db
+  ) {}
 
   createUser = (name: string, email: string) => {
     if (!name || !email) {
@@ -37,7 +37,7 @@ export class UserService  {
     };
 
     this.db.push(user);
-    console.log("Usuário inserido no banco de dados");
+    console.log(this.db);
   };
 
   getAllUsers = () => {

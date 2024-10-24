@@ -1,7 +1,3 @@
-interface IUser {
-  name: string;
-  email: string;
-}
 
 
 
@@ -16,15 +12,16 @@ const db = [
   },
 ]
 
+interface User {
+  name: string;
+  email: string;
+}
 
 
-export class UserService  {
-
-  db: IUser[];
-
-  constructor(database = db) {
-    this.db = database;
-  }
+export class UserService {
+  private db = [
+    
+  ];
 
   createUser = (name: string, email: string) => {
     if (!name || !email) {
@@ -37,7 +34,7 @@ export class UserService  {
     };
 
     this.db.push(user);
-    console.log("Usuário inserido no banco de dados");
+    console.log(this.db);
   };
 
   getAllUsers = () => {

@@ -16,6 +16,7 @@ export class UserController {
   };
 
   getUser = (request: Request, response: Response) => {
+    
     const userService = new UserService();
     
     if (userService.getAllUsers().length === 0) {

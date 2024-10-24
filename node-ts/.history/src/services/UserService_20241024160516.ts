@@ -37,7 +37,7 @@ export class UserService  {
     };
 
     this.db.push(user);
-    console.log("Usuário inserido no banco de dados");
+    console.log("Usuário inserido no banco de dados" );
   };
 
   getAllUsers = () => {

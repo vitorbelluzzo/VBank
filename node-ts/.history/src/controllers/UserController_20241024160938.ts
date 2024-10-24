@@ -16,8 +16,8 @@ export class UserController {
   };
 
   getUser = (request: Request, response: Response) => {
-    const userService = new UserService();
     
+    const userService = new UserService();
     if (userService.getAllUsers().length === 0) {
       return response.status(404).json({ message: "No users found" });
       
